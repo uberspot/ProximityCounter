@@ -1,7 +1,7 @@
 /**
 MIT/X Consortium License 
 
-© uberspot <Paul Sarbinowski>
+ï¿½ uberspot <Paul Sarbinowski>
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -105,7 +105,8 @@ public class MainPage extends Activity implements SensorEventListener {
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 		if(event.sensor.getType()==Sensor.TYPE_PROXIMITY && started && 
-						(event.timestamp-previousTimestamp > timeThreshold) ){
+						(event.timestamp-previousTimestamp > timeThreshold) 
+						&& (event.values[0] < 1) ){
 			outTextView.setText(getString(R.string.count) + ":" + ++counter);
 			previousTimestamp = event.timestamp;
 			if(counter>= counterMax){
