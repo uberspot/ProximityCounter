@@ -38,6 +38,11 @@
 			        
 					    </EditText>
 		    </LinearLayout>
+		     <CheckBox
+		        android:id="@+id/restart_checkbox"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@string/restart_automatically" />
 		    <LinearLayout  
                     android:id="@+id/horizontalLayout2"
                     android:layout_width="match_parent"
@@ -69,7 +74,6 @@
                             style="@style/ButtonText"
                             android:background="@drawable/btn_black"/>
             </LinearLayout>
-				    
 
 				     <TextView
                             android:id="@+id/outTextView"

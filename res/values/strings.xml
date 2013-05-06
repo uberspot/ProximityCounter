@@ -10,4 +10,6 @@
     <string name="clear">Clear</string>
     <string name="count">Count</string>
     <string name="no_sensor_warning">No Proximity Sensor! Exiting</string>
+    <string name="restart_automatically">restart automatically</string>
+    <string name="reps_completed">Reps completed</string>
 </resources>

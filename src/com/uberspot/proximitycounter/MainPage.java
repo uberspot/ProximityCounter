@@ -40,6 +40,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -50,9 +51,11 @@ public class MainPage extends Activity implements SensorEventListener {
 	private Sensor proximitySensor;
 	private TextView outTextView;
 	private Button startButton;
+	private CheckBox checkBox;
 	private EditText maxCounterText;
 	private int counter = 0, counterMax;
 	private boolean started;
+	private int repsCompleted = 0;
 	private long previousTimestamp = 0 ;
 	private static final long timeThreshold=400000000; //0.4 seconds expressed in nanoseconds
 	private static final int defaultMaxCount= 20; 
@@ -65,6 +68,9 @@ public class MainPage extends Activity implements SensorEventListener {
         outTextView = (TextView)findViewById(R.id.outTextView);
         startButton = (Button)findViewById(R.id.startButton);
         maxCounterText = (EditText)findViewById(R.id.countLimit);
+        checkBox = (CheckBox) findViewById(R.id.restart_checkbox);
+        checkBox.setChecked(getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+				.getBoolean("autoRestart", true));
         maxCounterText.addTextChangedListener(new TextWatcher(){ 
         	public void afterTextChanged(Editable s) {
         		counterMax = getMaxCounterText();
@@ -107,10 +113,16 @@ public class MainPage extends Activity implements SensorEventListener {
 		if(event.sensor.getType()==Sensor.TYPE_PROXIMITY && started && 
 						(event.timestamp-previousTimestamp > timeThreshold) 
 						&& (event.values[0] < 1) ){
-			outTextView.setText(getString(R.string.count) + ":" + ++counter);
+			outTextView.setText(getString(R.string.count) + ":" + ++counter + "\n" 
+						+ getString(R.string.reps_completed) + ": " + repsCompleted);
 			previousTimestamp = event.timestamp;
 			if(counter>= counterMax){
-				onStartClick(null);
+				if(checkBox.isChecked()) {
+					repsCompleted++;
+					clearCount(); //restart automatically
+				} else {
+					onStartClick(null);
+				}
 				playNotification();
 			}
 		}
@@ -149,6 +161,7 @@ public class MainPage extends Activity implements SensorEventListener {
 		//Save changes in preferences
     	SharedPreferences.Editor editor = getSharedPreferences(preferencesName, Context.MODE_PRIVATE).edit();
   	    editor.putInt("maxCount", getMaxCounterText());
+  	    editor.putBoolean("autoRestart", checkBox.isChecked());
   	    editor.commit();
   	    
 		super.onDestroy();
@@ -171,12 +184,14 @@ public class MainPage extends Activity implements SensorEventListener {
      * @param v
      */
     public void onClearClick(View v) {
+    	repsCompleted = 0;
     	clearCount();
     }
 
 	public void clearCount() {
 		counter = 0;
-    	outTextView.setText(getString(R.string.count) + ":" + counter);
+    	outTextView.setText(getString(R.string.count) + ":" + counter+ "\n" 
+				+ getString(R.string.reps_completed) + ": " + repsCompleted);
 	}
     
     /** Returns the number in the EditText with id countLimit
