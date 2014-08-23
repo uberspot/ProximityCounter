@@ -3,13 +3,13 @@
 
     <string name="app_name">ProximityCounter</string>
     <string name="action_settings">Settings</string>
-    <string name="count_till">"Count till: "</string>
+    <string name="count_till">Counts per rep: </string>
     <string name="default_count_limit">50</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="clear">Clear</string>
-    <string name="count">Count</string>
-    <string name="no_sensor_warning">No Proximity Sensor! Exiting</string>
+    <string name="count">Count in rep</string>
+    <string name="no_sensor_warning">No Proximity Sensor detected!</string>
     <string name="restart_automatically">restart automatically</string>
-    <string name="reps_completed">Reps completed</string>
+    <string name="reps_completed">Reps</string>
 </resources>

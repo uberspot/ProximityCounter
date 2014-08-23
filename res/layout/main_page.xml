@@ -1,87 +1,87 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tablelayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context=".MainPage" >
-            <LinearLayout  
-				    android:id="@+id/horizontalLayout1"
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content"
-				    android:paddingBottom="@dimen/activity_vertical_margin"
-				    android:paddingLeft="@dimen/activity_horizontal_margin"
-				    android:paddingRight="@dimen/activity_horizontal_margin"
-				    android:paddingTop="@dimen/activity_vertical_margin"
-				    android:orientation="horizontal"  >
-					    <TextView
-					        android:id="@+id/textView"
-					        android:layout_width="wrap_content"
-					        android:layout_height="wrap_content"
-			                android:layout_weight="1"
-					        android:gravity="left"
-					        android:text="@string/count_till"
-					        style="@style/textStyle" />
-			
-					    <EditText
-					        android:id="@+id/countLimit"
-					        android:layout_width="wrap_content"
-					        android:layout_height="wrap_content"
-					        android:gravity="right"
-					        android:inputType="number"
-					        android:layout_weight="1"
-					        android:text="" >
-			        
-					    </EditText>
-		    </LinearLayout>
-		     <CheckBox
-		        android:id="@+id/restart_checkbox"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:text="@string/restart_automatically" />
-		    <LinearLayout  
-                    android:id="@+id/horizontalLayout2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
-                    android:orientation="horizontal"  >
-                        <Button
-		                    android:id="@+id/startButton"
-		                    android:layout_height="wrap_content"
-		                    android:layout_width="wrap_content"
-		                    android:layout_weight="1"
-                            android:gravity="center_vertical|center_horizontal"
-		                    android:onClick="onStartClick"
-		                    android:text="@string/start" 
-		                    style="@style/ButtonText"
-		                    android:background="@drawable/btn_black"/>
-            
-                        <Button
-                            android:id="@+id/clearButton"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical|center_horizontal" 
-                            android:onClick="onClearClick"
-                            android:text="@string/clear" 
-                            style="@style/ButtonText"
-                            android:background="@drawable/btn_black"/>
-            </LinearLayout>
+    android:layout_height="match_parent" >
 
-				     <TextView
-                            android:id="@+id/outTextView"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:text=""
-                            style="@style/textStyle"
-                            android:textSize="32sp" />
- 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/tablelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_margin" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:padding="@dimen/activity_margin" >
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="@string/count_till" />
+
+            <EditText
+                android:id="@+id/countLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:inputType="number"
+                android:maxEms="6"
+                android:text="" >
+            </EditText>
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/restart_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/restart_automatically" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:padding="@dimen/activity_margin" >
+
+            <Button
+                android:id="@+id/startButton"
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_margin"
+                android:layout_weight="1"
+                android:background="@drawable/btn_black"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/start" />
+
+            <Button
+                android:id="@+id/clearButton"
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_margin"
+                android:layout_weight="1"
+                android:background="@drawable/btn_black"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/clear" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/outTextView"
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text=""
+            android:textSize="32sp" />
+    </LinearLayout>
+
+</ScrollView>

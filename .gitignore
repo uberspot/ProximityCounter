@@ -1,0 +1,16 @@
+/*
+!README.md
+!src/
+!res/
+!libs/
+!LICENSE
+!.gitignore
+!.gitmodules
+!ic_launcher-web.png
+!assets/
+!AndroidManifest.xml
+!external/
+!.classpath
+!screenshots/
+!*.apk*
+!project.properties
